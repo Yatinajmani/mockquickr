@@ -51,7 +51,7 @@ Route::get('/post/{id}','PostController@show')->name('single_post');
 Auth::routes(['verify' => true]);
 
 Route::get('image-file/{filename}',function($filename){
-	$path = storage_path() . '\uploads\img\\' . $filename;
+	$path = storage_path() . '/uploads/img/' . $filename;
 
 	$file = File::get($path);
 	$type = File::mimeType($path);
