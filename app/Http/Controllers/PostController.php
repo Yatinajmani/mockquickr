@@ -61,7 +61,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        if(request()->hasFile('file')&&request()->get('category')!=0){
+        if(request()->hasFile('file')&&$request->category!=0){
                 $fileName=request()->file('file')->getClientOriginalName();
                  // $request->file('file')->move(base_path() . '/public/images/catalog/',$fileName);
                 request()->file('file')->move(storage_path().'/uploads/img/', $fileName);
@@ -74,10 +74,10 @@ class PostController extends Controller
         }
         $p=Post::Create([
             'user_id'=> Auth::user()->id,
-            'category_id' => request()->get('category'),
-            'title' => request()->get('title'),
-            'description' => request()->get('description'),
-            'Starting_bid' => request()->get('Starting_bid'),
+            'category_id' => $request->category,
+            'title' => $request->title,
+            'description' => $request->description,
+            'Starting_bid' => $request->Starting_bid,
             'image_path' => $file_name,
         ]);
 
