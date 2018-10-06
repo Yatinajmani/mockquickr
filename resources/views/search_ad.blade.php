@@ -58,7 +58,12 @@
 													<img width="300px" height="150px" src="{{route('imageFile',[$post->image_path]) }}" title="" alt="" class="pull-left" />
 													<section class="list-left">
 														<h5 class="title">{{ $post->title }}</h5>
-														<span class="adprice">Current bid higest : {{ $post->Bid->max('bid') }}</span>
+														<span class="adprice">Current higest bid : Rs. @if($post->Bid->max('bid'))
+															{{ $post->Bid->max('bid') }}
+														@else
+														0
+														@endif
+														</span>
 														<p class="catpath">{{ $post->Category->name }}</p>
 													</section>
 													<section class="list-right">
