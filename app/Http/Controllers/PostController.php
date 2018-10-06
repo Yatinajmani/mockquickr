@@ -67,7 +67,7 @@ class PostController extends Controller
                  // $request->file('file')->move(base_path() . '/public/images/catalog/',$fileName);
                 Storage::putFileAs(
                 storage_path('uploads'),
-                request()->file('uploadedFile'),
+                request()->file('file'),
                 $fileName
                 );
         }
