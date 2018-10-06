@@ -69,7 +69,8 @@ class PostController extends Controller
         }
         else
         {
-            return Redirect::back();
+            return "Some error occured";
+            // return Redirect::back();
         }
         $p=Post::Create([
             'user_id'=> Auth::user()->id,
