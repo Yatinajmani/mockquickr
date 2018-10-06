@@ -64,8 +64,11 @@ class PostController extends Controller
         if(request()->hasFile('file')&&$request->category!=0){
                 $fileName=request()->file('file')->getClientOriginalName();
                  // $request->file('file')->move(base_path() . '/public/images/catalog/',$fileName);
-                request()->file('file')->move(storage_path().'/uploads/img/', $fileName);
-                $file_name=$fileName;
+                Storage::putFileAs(
+                storage_path('uploads'),
+                request()->file('uploadedFile'),
+                $fileName
+                );
         }
         else
         {
@@ -78,7 +81,7 @@ class PostController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'Starting_bid' => $request->Starting_bid,
-            'image_path' => $file_name,
+            'image_path' => $fileName,
         ]);
 
         return Redirect::back();
