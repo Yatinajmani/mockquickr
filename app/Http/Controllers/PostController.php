@@ -64,7 +64,7 @@ class PostController extends Controller
         if(request()->hasFile('file')&&request()->get('category')!=0){
                 $fileName=request()->file('file')->getClientOriginalName();
                  // $request->file('file')->move(base_path() . '/public/images/catalog/',$fileName);
-                request()->file('file')->move(storage_path().'/uploads/img/', $fileName);
+                request()->file('file')->move('/storage/uploads/img/', $fileName);
                 $file_name=$fileName;
         }
         else
