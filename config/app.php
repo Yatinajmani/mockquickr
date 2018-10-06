@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'MockQuickr'),
+    'name' => env('APP_NAME', 'QuickrMock'),
 
     /*
     |--------------------------------------------------------------------------
