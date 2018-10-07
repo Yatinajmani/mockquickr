@@ -1,63 +1,51 @@
 @extends('master')
+@section('title','Login')
 
 @section('main')
-<div id="page-wrapper" class="sign-in-wrapper">
-    <div class="graphs">
-        <div class="sign-in-form">
-            <div class="sign-in-form-top">
-                <h1>Log in</h1>
+    <center>
+        <br>
+        <h5 class="indigo-text">Please, login into your account</h5>
+        <br>
+        <div class="container">
+        <div class="z-depth-1 indigo lighten-5 row card-panel" style="width: 30%">
+          <form class="col s12" method="post" action="{{ route('login') }}">
+            @csrf
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input name="email" value="{{ old('email') }}" type="email" class="validate form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="Enter Your Email"/>
+                @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
+                @endif
+              </div>
             </div>
-            <form method="POST" action="{{ route('login') }}">
-                <div class="signin">
-                    @csrf
-                    <div class="log-input">
-                        <div class="log-input-left">
-                            <input name="email" value="{{ old('email') }}" type="text" class="user form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"placeholder="Your mail" />
-                            @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="log-input">
-                        <div class="log-input-left">
-                         <input name="password" type="password" class="lock form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Your Password" />
-                         @if ($errors->has('password'))
-                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('password') }}</strong>
-                        </span>
-                        @endif
-                    </div>
-                </div>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="remember">
-                        {{ __('Remember Me') }}
-                    </label>
-                    <a class="btn btn-link pull-right" href="{{ route('password.request') }}">
-                        {{ __('Forgot Your Password?') }}
-                    </a>
-                    <br/>
-                    <br/>
-                    <input type="submit">
-                </div>
+            <div class='row'>
+              <div class='input-field col s12'>
+                <input name="password" type="password" class="validate form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Enter Your Password"/>
+                    @if ($errors->has('password'))
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                    @endif
+              </div>
+              <label style='float: right;'>
+                <a class='indigo-text' href="{{ route('password.request') }}"><b>Forgot Password?</b></a>
+                </label>
             </div>
-        </form>
-        <div class="new_people">
-            <h2>For New People</h2>
-            <p>Having hands on experience in creating innovative designs,I do offer design 
-            solutions which harness.</p>
-            <a href="{{ route('register') }}">Register Now!</a>
+            <br />
+            <center>
+              <div class='row'>
+                <button type='submit' name='btn_login' class="col s12 btn btn-large waves-effect indigo">Login</button>
+              </div>
+            </center>
+          </form>
+          <h5 class="indigo-text">or</h5>
+          <br>
+          <a class="col s12 btn btn-large waves-effect indigo darken-4" href="{{ route('register') }}">Register Now!</a>
         </div>
-    </div>
-</div>
-</div>
+      </div>
+    </center>
+      <br>
+
 @endsection

@@ -56,8 +56,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'yatinajmani@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'QuickrMock'),
     ],
 
     /*
@@ -84,9 +84,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME',''),
+    'username' => env('MAIL_USERNAME'),
 
-    'password' => env('MAIL_PASSWORD',''),
+    'password' => env('MAIL_PASSWORD'),
 
     /*
     |--------------------------------------------------------------------------
@@ -119,5 +119,10 @@ return [
             resource_path('views/vendor/mail'),
         ],
     ],
+
+	'mailgun' => [
+	    'domain' => 'sandboxa79be303a4cb453cb8bbe1aa2521b65a.mailgun.org',
+	    'secret' => 'key-c9f6f98bd6307cc9c83f71fd89584a02',
+	],
 
 ];

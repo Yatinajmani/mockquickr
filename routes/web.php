@@ -1,6 +1,7 @@
 <?php
 
 use App\Category;
+use App\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Category;
 
 Route::get('/', function () {
 	$categories=Category::all();
-	return view('welcome',compact('categories'));
+	$posts=Post::all()->take(-5)->all();
+	return view('welcome',compact('categories','posts'));
 });
 
 Route::group(['middleware' => ['auth','verified']], function() {
