@@ -38,7 +38,7 @@
             <div class="carousel" id="carousel3" style="height: 300px">
                 @forelse($posts as $post)
                 <div class="carousel-item">
-                    <a href="{{route('single_post',[$post->id])}}">
+                    <a class="indigo-text text-darken-4" href="{{route('single_post',[$post->id])}}">
                     <img src="{{route('imageFile',[$post->image_path])}}">
                     <p>{{ $post->title }}</p>
                     <p>{{ $post->Starting_bid }}</p>
